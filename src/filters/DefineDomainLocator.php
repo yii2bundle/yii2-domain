@@ -42,7 +42,7 @@ class DefineDomainLocator extends BaseScenario
 	private function loadDomainContainerClass()
 	{
 		if(!class_exists(Dii::class)) {
-			require VENDOR_DIR . DS . 'yii2lab' . DS . 'yii2-domain' . DS . 'src' . DS . 'yii2' . DS . 'Dii.php';
+			require VENDOR_DIR . DS . 'yii2bundle' . DS . 'yii2-domain' . DS . 'src' . DS . 'yii2' . DS . 'Dii.php';
 		}
 	}
 	
