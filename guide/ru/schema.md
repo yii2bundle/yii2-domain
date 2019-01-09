@@ -76,3 +76,25 @@ class CitySchema extends BaseSchema {
 
 * uniqueFields - список уникальных полей
 * relations - связи
+
+Если надо связать не с хранилищем, а с сервисом, указываем параметр `classType`:
+
+```php
+class CitySchema extends BaseSchema {
+	
+	public function relations() {
+		return [
+			'country' => [
+				'type' => RelationEnum::ONE,
+				'field' => 'country_id',
+				'classType' => RelationClassTypeEnum::SERVICE,
+				'foreign' => [
+					'id' => 'geo.country',
+					'field' => 'id',
+				],
+			],
+		];
+	}
+	
+}
+```
