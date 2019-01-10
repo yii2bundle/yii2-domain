@@ -2,6 +2,7 @@
 
 namespace yii2lab\domain\web\actions;
 
+use yii\base\Model;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\navigation\domain\widgets\Alert;
 use Yii;
@@ -16,7 +17,9 @@ class UpdateAction extends Action {
 		$this->view->title = Yii::t('main', 'update_title');
 		$methodOne = $this->serviceMethodOne;
 		$entity = $this->service->$methodOne($id);
-		$model = $this->createForm($entity->toArray());
+		/** @var Model $model */
+		$model = $this->createForm();
+		Yii::configure($model, $entity->toArray($model->attributes()));
 		if(Yii::$app->request->isPost && !$model->hasErrors()) {
 			try{
 				$method = $this->serviceMethod;
