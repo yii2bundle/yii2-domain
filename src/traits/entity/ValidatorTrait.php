@@ -16,7 +16,6 @@ use ReflectionClass;
 use ReflectionProperty;
 use yii\base\Arrayable;
 use yii\helpers\ArrayHelper;
-use yii2lab\validator\DynamicModel;
 use DateTime;
 use Yii;
 use yii\base\Behavior;
