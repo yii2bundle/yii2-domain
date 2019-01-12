@@ -26,12 +26,9 @@ class RelationWithHelper {
 		return $with ? $with : [];
 	}
 	
-	public static function fetch($query, array &$withTrimmedArray = []) : array {
+	public static function fetch(Query $query, array &$withTrimmedArray = []) : array {
 		if($query instanceof Query) {
 			$withArray = $query->getParam('with');
-		} elseif(is_array($query)) {
-			/** @deprecated */
-			$withArray = $query;
 		} else {
 			return [];
 		}
