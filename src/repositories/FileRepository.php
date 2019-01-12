@@ -5,6 +5,7 @@ namespace yii2lab\domain\repositories;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\FileHelper;
+use yii2lab\app\domain\helpers\EnvService;
 
 abstract class FileRepository extends BaseRepository {
 	
@@ -59,7 +60,7 @@ abstract class FileRepository extends BaseRepository {
 			throw new InvalidConfigException('Property "pathName" not assigned');
 		}
 		$path = param('static.path.' . $this->pathName);
-		$basePath = env('servers.static.publicPath');
+		$basePath = EnvService::get('servers.static.publicPath');
 		$path = Yii::getAlias($basePath . '/' . $path);
 		$path = FileHelper::normalizePath($path);
 		if($addPath) {
