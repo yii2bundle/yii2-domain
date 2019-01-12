@@ -304,18 +304,6 @@ class Query extends Component {
 		return $queryClone;
 	}
 	
-	/**
-	 * @return object|Rest
-	 * @throws \yii\base\InvalidConfigException
-	 *
-	 * @deprecated move to builder
-	 */
-	public function getRest() {
-		/** @var Rest $instance */
-		$instance = Yii::createObject(Rest::class, ['query' => $this]);
-		return $instance;
-	}
-	
 	protected function normalizeOrderBy($columns)
 	{
 		if ($columns instanceof Expression) {

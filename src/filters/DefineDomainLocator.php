@@ -7,6 +7,7 @@ use App;
 use yii2lab\app\domain\helpers\CacheHelper;
 use yii2lab\domain\base\BaseDomainLocator;
 use yii2lab\extension\scenario\base\BaseScenario;
+use yii2lab\extension\scenario\collections\ScenarioCollection;
 use yii2lab\extension\scenario\helpers\ScenarioHelper;
 
 class DefineDomainLocator extends BaseScenario
@@ -30,8 +31,8 @@ class DefineDomainLocator extends BaseScenario
 	{
 		$definition = '';
 		$callback = function () use ($definition) {
-			$loaders = ScenarioHelper::forgeCollection($this->filters);
-			$domains = ScenarioHelper::runAll($loaders, []);
+			$filterCollection = new ScenarioCollection($this->filters);
+			$domains = $filterCollection->runAll([]);
 			return $domains;
 		};
 		$config = CacheHelper::forge(APP . '_domain_config', $callback);

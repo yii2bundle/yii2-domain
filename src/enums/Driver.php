@@ -42,24 +42,6 @@ class Driver extends BaseEnum {
 		return self::test($driver, $withTest);
 	}
 	
-	/**
-	 * @param bool $withTest
-	 *
-	 * @return array|mixed|null|string
-	 *
-	 * @deprecated moved to self::primary()
-	 */
-	public static function remote($withTest = false) {
-		$driver = EnvService::get('domain.driver.primary');
-		if(empty($driver)) {
-			$driver = EnvService::get('remote.driver');
-		}
-		if($driver == self::CORE) {
-			return $driver;
-		}
-		return self::test($driver, $withTest);
-	}
-	
 	public static function test($driver = null, $test = self::TEST) {
 		if(!YII_ENV_TEST || !$test) {
 			return $driver;
