@@ -2,7 +2,6 @@
 
 namespace yii2lab\domain\filters;
 
-use Dii;
 use Yii;
 use App;
 use yii2lab\app\domain\helpers\CacheHelper;
@@ -39,16 +38,8 @@ class DefineDomainLocator extends BaseScenario
 		return $config;
 	}
 	
-	private function loadDomainContainerClass()
-	{
-		if(!class_exists(Dii::class)) {
-			require VENDOR_DIR . DS . 'yii2bundle' . DS . 'yii2-domain' . DS . 'src' . DS . 'yii2' . DS . 'Dii.php';
-		}
-	}
-	
 	private function createDomainLocator($domains)
 	{
-		$this->loadDomainContainerClass();
 		$domain = new BaseDomainLocator;
 		/*if(class_exists(DomainLocator::class)) {
 			$domain = new DomainLocator;
@@ -57,7 +48,6 @@ class DefineDomainLocator extends BaseScenario
 		}*/
         $domain->setComponents($domains);
         App::$domain = $domain;
-		Dii::$domain = $domain;
 		if(property_exists(Yii::class, 'domain')) {
             Yii::$domain = $domain;
         }

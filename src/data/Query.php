@@ -277,19 +277,6 @@ class Query extends Component {
 		return $this;
 	}
 	
-	/**
-	 * @param     $field
-	 * @param int $direction
-	 *
-	 * @return $this
-	 *
-	 * @deprecated use method addOrderBy()
-	 */
-	public function addOrder($field, $direction = SORT_ASC) {
-		$this->query[self::ORDER][ $field ] = $direction;
-		return $this;
-	}
-	
 	public function toArray() {
 		return $this->query;
 	}

@@ -11,20 +11,6 @@ use yii2lab\domain\events\ReadEvent;
 
 trait ReadEventTrait {
 	
-	
-	// todo: move method in helper
-	
-	/**
-	 * @param null $query
-	 *
-	 * @return null|Query
-	 *
-	 * @deprecated move to Query::forge()
-	 */
-	public function forgeQuery($query = null) {
-		return Query::forge($query);
-	}
-	
 	protected function prepareQuery(Query $query = null) {
 		$action = ActiveMethodEnum::READ_ALL;
 		$query = Query::forge($query);
@@ -44,6 +30,5 @@ trait ReadEventTrait {
 		$this->trigger(EventEnum::EVENT_AFTER_READ, $event);
 		return $event->content;
 	}
-	
 	
 }

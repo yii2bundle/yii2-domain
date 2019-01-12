@@ -3,6 +3,7 @@
 namespace yii2lab\domain\data;
 
 use yii\base\InvalidArgumentException;
+use yii2lab\extension\arrayTools\helpers\Collection;
 
 class EntityCollection extends Collection {
 	
